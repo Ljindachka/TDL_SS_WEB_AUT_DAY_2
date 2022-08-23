@@ -10,7 +10,16 @@ context("Elements Page", () => {
     // fill in textboxes with necessary information
     // validate the paragraphs
     it("Filling in Text Boxes", () => {
-      // add the necessary steps
+      TextBoxPage.fullName.type("Linda");
+      TextBoxPage.emailBox.type("austelinda@gmail.com");
+      TextBoxPage.currentAddress.type("This is current address");
+      TextBoxPage.permanentAddress.type("This is permanent address");
+      TextBoxPage.submit.click();
+      // VALIDATION
+      TextBoxPage.outputName.should("contain", "Linda");
+      TextBoxPage.outputEmail.should("contain", "austelinda@gmail.com");
+      TextBoxPage.outputCurrentAddress.should("contain", "This is current address");
+      TextBoxPage.outputPermanentAddress.should("contain", "This is permanent address");
     });
   });
 
