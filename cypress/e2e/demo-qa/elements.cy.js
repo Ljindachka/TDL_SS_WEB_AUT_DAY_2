@@ -1,6 +1,7 @@
 import TextBoxPage from "../../pageObjects/textBoxPage";
 import checkBoxPage from "../../pageObjects/checkBoxPage";
 import RadioButtonsPage from "../../pageObjects/RadioButtonsPage";
+import WebTablesPage from "../../pageObjects/WebTablesPage";
 
 // Create textbox scenario
 context("Elements Page", () => {
@@ -69,7 +70,7 @@ context("Elements Page", () => {
     });
     // Create RadioButtons page object
     // Scenario 1:
-    it.only("Clicking Radio buttons", () => {
+    it("Clicking Radio buttons", () => {
     // Click yesButton
     RadioButtonsPage.buttonYes.click();
     //validate the message
@@ -84,11 +85,28 @@ context("Elements Page", () => {
   });
 
   context("Web tables scenarios", () => {
+    beforeEach(() => {
+      WebTablesPage.visit();
+    });
     // Create WebTables page object
     // Create scenario 1:
-    
+    it.only("Web tables actions", () => {
     // Click add record button
-    // fill in the necessary information
+    WebTablesPage.addRecordButton.click();
+     // fill in the necessary information
+    WebTablesPage.firstName.type("Linda");
+    WebTablesPage.lastName.type("Aušte");
+    WebTablesPage.emailName.type("austelinda@gmail.com");
+    WebTablesPage.ageNumber.type("25");
+    WebTablesPage.salary.type("1000000");
+    WebTablesPage.department.type("TestDevLab");
+    // click submit button
+    WebTablesPage.clickSubmit.click();
+    // search for the user based on previously added information
+    WebTablesPage.search.type("Linda");
+    // validate tha the user is visible
+
+    })
     // click submit button
     // search for the user based on previously added information
     // validate tha the user is visible
